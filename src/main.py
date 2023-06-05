@@ -11,7 +11,7 @@ image_asset_path = 'src/assets/images'
 
 ### set height and width of window
 window = pygame.display.set_mode(coordinates)
-# elevation = window_height * 0.8
+sealevel_elevation = window_height * 0.8
 fps = 32
 pipe_image_path = f'{image_asset_path}/pipe.png'
 background_image_path = f'{image_asset_path}/background.jpg'
@@ -51,3 +51,38 @@ if __name__ == "__main__":
 
 	print("WELCOME TO THE FLAPPY BIRD GAME")
 	print("Press space or enter to start the game")
+
+while True:
+
+		# sets the coordinates of flappy bird
+		horizontal = int(window_width/5)
+		vertical = int((window_height - game_images['flappybird'].get_height())/2)
+		
+		# for selevel
+		ground = 0
+		while True:
+			for event in pygame.event.get():
+
+				# if user clicks on cross button, close the game
+				if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+					pygame.quit()
+					
+					# Exit the program
+					sys.exit()
+
+				# If the user presses space or up key,
+				# start the game for them
+				elif event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
+					flappygame()
+				
+				# if user doesn't press anykey Nothing happen
+				else:
+					window.blit(game_images['background'], (0, 0))
+					window.blit(game_images['flappybird'], (horizontal, vertical))
+					window.blit(game_images['sea_level'], (ground, sealevel_elevation))
+					
+					# Just Refresh the screen
+					pygame.display.update()		
+					
+					# set the rate of frame per second
+					framepersecond_clock.tick(fps)
