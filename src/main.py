@@ -46,9 +46,7 @@ if __name__ == "__main__":
 	game_images['flappybird'] = pygame.image.load(birdplayer_image_path).convert_alpha()				
 	game_images['sea_level'] = pygame.image.load(sealevel_image_path).convert_alpha()
 	game_images['background'] = pygame.image.load(background_image_path).convert_alpha()
-	game_images['pipeimage'] = (pygame.transform.rotate(pygame.image.load(pipe_image_path)
-														.convert_alpha(),
-														180),
+	game_images['pipeimage'] = (pygame.transform.rotate(pygame.image.load(pipe_image_path).convert_alpha(),180),
 								pygame.image.load(pipe_image_path).convert_alpha())
 
 	print("WELCOME TO THE FLAPPY BIRD GAME")
